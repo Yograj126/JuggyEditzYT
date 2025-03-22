@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Juggy Editz</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JuggyEditz - 3D Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #FF0000;
+            --secondary: #181818;
+            --accent: #FF6666;
+            --text: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(45deg, #0f0f0f, #1a1a1a);
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            perspective: 1000px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            position: relative;
+            transform-style: preserve-3d;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 3D Channel Header */
+        .channel-card {
+            position: relative;
+            transform-style: preserve-3d;
+            padding: 3rem;
+            background: linear-gradient(45deg, var(--secondary), #000);
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            margin: 4rem auto;
+            transition: transform 0.5s;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotateX(5deg) rotateY(5deg); }
+            50% { transform: translateY(-20px) rotateX(-5deg) rotateY(-5deg); }
+        }
+
+        .channel-header {
+            transform-style: preserve-3d;
+            text-align: center;
+        }
+
+        .channel-logo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid var(--primary);
+            transform: translateZ(50px);
+            transition: transform 0.5s;
+            margin: 0 auto 2rem;
+        }
+
+        .channel-logo:hover {
+            transform: translateZ(50px) rotate(360deg);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: var(--primary);
+            text-shadow: 0 5px 15px rgba(255,0,0,0.3);
+            transform: translateZ(30px);
+            margin-bottom: 1rem;
+        }
+
+        /* 3D Link Cards */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 3rem 0;
+            transform-style: preserve-3d;
+        }
+
+        .link-card {
+            background: rgba(255,255,255,0.05);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            transform-style: preserve-3d;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .link-card:hover {
+            transform: translateY(-10px) rotateX(5deg) rotateY(5deg) scale(1.05);
+            background: rgba(255,0,0,0.1);
+        }
+
+        .link-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255,255,255,0.2),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .link-card:hover::before {
+            left: 100%;
+        }
+
+        .link-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            transform: translateZ(30px);
+        }
+
+        /* Animated Background */
+        .bg-effects {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            transform-style: preserve-3d;
+        }
+
+        .bg-effects::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(var(--primary), transparent);
+            filter: blur(100px);
+            animation: pulse 8s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+            50% { transform: translate(-50%, -50%) scale(1.5); opacity: 0.1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-effects"></div>
+    
+    <div class="container">
+        <div class="channel-card">
+            <div class="channel-header">
+                <img src="" alt="" class="">
+                <h1>JuggyEditz</h1>
+                <p style="transform: translateZ(20px);">🎬 Skibidi Toilet Quality Editer</p>
+            </div>
+        </div>
+
+        <div class="links-grid">
+            <!-- YouTube Section -->
+            <div class="link-card" onclick="window.open('https://youtube.com/@juggyeditz', '_blank')">
+                <i class="fab fa-youtube link-icon"></i>
+                <h3>YouTube Channel</h3>
+                <p>Watch latest edits & tutorials</p>
+            </div>
+
+            <!-- Membership -->
+            <div class="link-card">
+                <i class="fas fa-gem link-icon"></i>
+                <h3>Premium Membership</h3>
+                <p>Currently no Membership</p>
+            </div>
+
+            <!-- Tutorials -->
+            <div class="link-card">
+                <i class="fas fa-video link-icon"></i>
+                <h3>Editing 4K CC</h3>
+                <p>Master video editing </p>
+              
+          <div class="discord-box">
+    <a href="https://drive.google.com/file/d/1W-6tGCvDIXb2vUistw2Zok_XhLXdHgQb/view?usp=drive_link" 
+       class="discord-link" 
+       target="_blank" 
+       rel="noopener noreferrer">
+        Juggy AE CC
+    </a>
+</div> 
+              
+   <div class="discord-box">
+    <a href="https://drive.google.com/file/d/1CYPcatpDu64-0XIJ2cln__pWfFA4Q4fP/view?usp=drive_link" 
+       class="discord-link" 
+       target="_blank" 
+       rel="noopener noreferrer">
+        Juggy  Show CC                                                                                                                       
+        </a>
+</div>
+              
+      <div class="discord-box">
+    <a href="https://drive.google.com/file/d/1DJjZMKBb_MnHFfaIpXapWC6XKYMBdUg8/view?usp=drive_link" 
+       class="discord-link" 
+       target="_blank" 
+       rel="noopener noreferrer">
+        Juggy Zorox CC                                                                                                                                              
+        </a>
+</div>       
+              
+         <div class="discord-box">
+    <a href="https://drive.google.com/file/d/14X8LnJJ7r0pE6dFjbNobeMf-gIFaPls8/view?usp=drive_link" 
+       class="discord-link" 
+       target="_blank" 
+       rel="noopener noreferrer">
+        Juggy RTX CC                                                                                                                                             
+        </a>
+</div>     
+          
+          </div>
+
+            <!-- Presets -->
+            <div class="link-card">
+                <i class="fas fa-magic link-icon"></i>
+                <h3>Preset Store</h3>
+                <p>Download  presets</p>
+            </div>
+
+            <!-- Commission -->
+            <div class="link-card">
+                <i class="fas fa-paint-brush link-icon"></i>
+                <h3>Commission Work</h3>
+                <p>Request custom edits</p>
+            </div>
+
+            <!-- Social Media -->
+            <div class="link-card">
+                <i class="fas fa-hashtag link-icon"></i>
+                <h3>Social Media</h3>
+                <div class="social-links>      
+                  
+                    <i class="fab fa-discort"></i>
+                                             
+                                             <div class="discord-box">
+    <a href="https://discord.gg/SvRRgtPDqG" 
+       class="discord-link" 
+       target="_blank" 
+       rel="noopener noreferrer">
+        🎮 Join My Discord
+    </a>
+</div>
+                    <i class="fab fa-tiktok"></i>
+                    <i class="fab fa-twitter"></i>
+                 
+</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Parallax Effect
+        document.addEventListener('mousemove', (e) => {
+            const cards = document.querySelectorAll('.link-card, .channel-card');
+            const mouseX = (window.innerWidth / 2 - e.pageX) / 30;
+            const mouseY = (window.innerHeight / 2 - e.pageY) / 30;
+            
+            cards.forEach(card => {
+                card.style.transform = `
+                    rotateY(${mouseX}deg) 
+                    rotateX(${mouseY}deg) 
+                    translateZ(20px)
+                `;
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
+<!-- Background Video -->
+<div class="video-background">
+    <video autoplay muted loop playsinline id="bgVideo">
+        <source src="your-video.mp4" type="video/mp4">
+        <!-- Fallback image if video doesn't load -->
+        <img src="fallback-image.jpg" alt="Background">
+    </video>
+    <div class="video-overlay"></div>
+</div> 
+                              <div 
+                         
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .footer-effect {
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        .glow {
+            font-size: 24px;
+            color: #ff0000 !important;
+            font-weight: bold !important;
+            animation: glow 2s ease-in-out infinite alternate;
+            font-family: Arial, sans-serif;
+            text-shadow: 0 0 5px #ff0000,
+                         0 0 10px #ff0000,
+                         0 0 20px #ff0000;
+            margin: 0;
+            position: relative;
+            display: inline-block;
+            padding: 10px 20px;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px #ff0000,
+                            0 0 10px #ff0000,
+                            0 0 20px #ff0000;
+            }
+            to {
+                text-shadow: 0 0 10px #ff0000,
+                            0 0 30px #ff0000,
+                            0 0 50px #ff0000;
+            }
+        }
+
+        .shower {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: #ff0000;
+            width: 2px;
+            height: 15px;
+            animation: fall linear infinite;
+            opacity: 0.5;
+            filter: blur(1px);
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100vh) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Your website content here -->
+
+    <!-- Footer effect -->
+    <div class="footer-effect">
+        <div class="shower" id="shower"></div>
+        <div class="glow">Made by RJ Gamer</div>
+    </div>
+
+    <script>
+        function createParticle() {
+            const container = document.getElementById('shower');
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDuration = Math.random() * 2 + 1 + 's';
+            container.appendChild(particle);
+            
+            // Remove particle after animation
+            setTimeout(() => {
+                if (particle.parentNode) {
+                    particle.parentNode.removeChild(particle);
+                }
+            }, 5000);
+        }
+
+        // Start particle animation
+        setInterval(createParticle, 30);
+    </script>
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
